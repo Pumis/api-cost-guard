@@ -119,8 +119,8 @@ export default function APILandingPage() {
     console.log('🔑 API Key (first 10 chars):', CONVERTKIT_API_KEY.length > 10 ? CONVERTKIT_API_KEY.substring(0, 10) + '...' : CONVERTKIT_API_KEY);
     
     // Check if credentials are set
-    if (CONVERTKIT_FORM_ID === '8635829' || CONVERTKIT_API_KEY === 'w2ORBBTTcrdBvkjED8B5HQ') {
-      const msg = '⚠️ You need to replace 8635829 and w2ORBBTTcrdBvkjED8B5HQ with your actual ConvertKit credentials in the code!';
+    if (CONVERTKIT_FORM_ID === 'YOUR_FORM_ID_HERE' || CONVERTKIT_API_KEY === 'YOUR_API_KEY_HERE') {
+      const msg = '⚠️ You need to replace YOUR_FORM_ID_HERE and YOUR_API_KEY_HERE with your actual ConvertKit credentials in the code!';
       console.error(msg);
       setErrorMessage(msg);
       alert(msg);
