@@ -36,10 +36,6 @@ interface CalculationResult {
   color: string;
 }
 
-// ⭐ CONVERTKIT CONFIGURATION - REPLACE THESE VALUES
-const CONVERTKIT_FORM_ID: string = '8635829';  // Replace with your form ID
-const CONVERTKIT_API_KEY: string = 'w2ORBBTTcrdBvkjED8B5HQ';  // Replace with your API key
-
 // Pricing data (per million tokens) - Updated for 2025
 const API_PRICING: ApiPricing = {
   openai: {
@@ -111,14 +107,10 @@ export default function APILandingPage() {
   const savings = mostExpensive.cost - cheapest.cost;
   const savingsPercent = ((savings / mostExpensive.cost) * 100).toFixed(0);
 
-  // ⭐ CONVERTKIT INTEGRATION WITH DETAILED ERROR LOGGING
+  // ConvertKit Integration - Using server-side API route
   const handleSubmit = async () => {
-    console.log('🔍 Starting email submission...');
-    console.log('📧 Email:', email);
-    console.log('🔑 Form ID:', CONVERTKIT_FORM_ID);
-    console.log('🔑 API Key (first 10 chars):', CONVERTKIT_API_KEY.length > 10 ? CONVERTKIT_API_KEY.substring(0, 10) + '...' : CONVERTKIT_API_KEY);
-    
-
+    console.log('Starting email submission...');
+    console.log('Email:', email);
 
     if (!email || !email.includes('@')) {
       alert('Please enter a valid email');
@@ -129,46 +121,34 @@ export default function APILandingPage() {
     setErrorMessage('');
 
     try {
-      const url = `https://api.convertkit.com/v3/forms/${CONVERTKIT_FORM_ID}/subscribe`;
-      console.log('🌐 Calling URL:', url);
+      console.log('Calling API route: /api/subscribe');
 
-      const body = {
-        api_key: CONVERTKIT_API_KEY,
-        email: email,
-      };
-      console.log('📦 Request body:', { 
-        email: body.email, 
-        api_key: body.api_key.length > 10 ? body.api_key.substring(0, 10) + '...' : body.api_key 
-      });
-
-      const response = await fetch(url, {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify({ email }),
       });
 
-      console.log('📊 Response status:', response.status);
-      console.log('📊 Response ok:', response.ok);
-
-      const responseText = await response.text();
-      console.log('📄 Response body:', responseText);
+      const data = await response.json();
+      console.log('Response status:', response.status);
+      console.log('Response data:', data);
 
       if (response.ok) {
-        console.log('✅ SUCCESS! Email sent to ConvertKit!');
+        console.log('SUCCESS! Email sent to ConvertKit!');
         setSubmitted(true);
       } else {
-        const errorMsg = `ConvertKit API Error (${response.status}): ${responseText}`;
-        console.error('❌', errorMsg);
+        const errorMsg = `Subscription failed (${response.status}): ${data.error || 'Unknown error'}`;
+        console.error(errorMsg);
         setErrorMessage(errorMsg);
-        alert(`Error: ${errorMsg}\n\nCheck the browser console (F12) for details.`);
+        alert(`Error: ${errorMsg}`);
       }
     } catch (error) {
       const errorMsg = error instanceof Error ? error.message : 'Unknown error';
-      console.error('❌ Fetch error:', error);
+      console.error('Fetch error:', error);
       setErrorMessage(errorMsg);
-      alert(`Network error: ${errorMsg}\n\nCheck the browser console (F12) for details.`);
+      alert(`Network error: ${errorMsg}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -481,10 +461,9 @@ export default function APILandingPage() {
         </p>
       </section>
 
-      {/* Email Capture CTA - WITH DEBUG INFO */}
+      {/* Email Capture CTA */}
       <section className="max-w-4xl mx-auto px-4 py-20">
         <div className="bg-gradient-to-r from-emerald-500/20 to-blue-500/20 border border-emerald-500/30 rounded-2xl p-12 text-center relative overflow-hidden">
-          {/* Limited Offer Badge */}
           <div className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold animate-pulse">
             🔥 First 10 Only!
           </div>
@@ -496,7 +475,6 @@ export default function APILandingPage() {
           <p className="text-2xl font-bold text-emerald-400 mb-8">
             First 10 signups get 50% off for life! 🎉
           </p>
-
 
           {!submitted ? (
             <div className="flex gap-4 max-w-md mx-auto flex-wrap justify-center">
@@ -528,7 +506,6 @@ export default function APILandingPage() {
             <div className="mt-4 bg-red-500/10 border border-red-500/30 rounded-lg p-4 text-left">
               <p className="text-red-400 font-semibold mb-1">Error Details:</p>
               <p className="text-sm text-slate-300">{errorMessage}</p>
-              <p className="text-xs text-slate-400 mt-2">Check browser console (F12) for more info</p>
             </div>
           )}
 
