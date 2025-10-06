@@ -119,7 +119,7 @@ export default function APILandingPage() {
     console.log('🔑 API Key (first 10 chars):', CONVERTKIT_API_KEY.length > 10 ? CONVERTKIT_API_KEY.substring(0, 10) + '...' : CONVERTKIT_API_KEY);
     
     // Check if credentials are set
-    if (CONVERTKIT_FORM_ID === 'YOUR_FORM_ID_HERE' || CONVERTKIT_API_KEY === 'YOUR_API_KEY_HERE') {
+    if (CONVERTKIT_FORM_ID === '8635829' || CONVERTKIT_API_KEY === 'w2ORBBTTcrdBvkjED8B5HQ') {
       const msg = '⚠️ You need to replace YOUR_FORM_ID_HERE and YOUR_API_KEY_HERE with your actual ConvertKit credentials in the code!';
       console.error(msg);
       setErrorMessage(msg);
@@ -504,16 +504,6 @@ export default function APILandingPage() {
             First 10 signups get 50% off for life! 🎉
           </p>
 
-          {/* Debug Info */}
-          {(CONVERTKIT_FORM_ID === '8635829' || CONVERTKIT_API_KEY === 'w2ORBBTTcrdBvkjED8B5HQ') && (
-            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6 text-left">
-              <p className="text-yellow-400 font-semibold mb-2">⚠️ ConvertKit Not Configured</p>
-              <p className="text-sm text-slate-300">
-                You need to replace YOUR_FORM_ID_HERE and YOUR_API_KEY_HERE in the code with your actual ConvertKit credentials.
-                Find them at lines 55-56 in components/APILandingPage.tsx
-              </p>
-            </div>
-          )}
 
           {!submitted ? (
             <div className="flex gap-4 max-w-md mx-auto flex-wrap justify-center">
