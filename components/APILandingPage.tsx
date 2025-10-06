@@ -591,8 +591,8 @@ export default function APILandingPage() {
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <div className="space-y-2 text-sm text-slate-400">
-                <a href="#" className="block hover:text-white">Privacy</a>
-                <a href="#" className="block hover:text-white">Terms</a>
+<a href="/privacy" className="block hover:text-white">Privacy</a>
+<a href="/terms" className="block hover:text-white">Terms</a>
                 <a href="#" className="block hover:text-white">Security</a>
               </div>
             </div>
