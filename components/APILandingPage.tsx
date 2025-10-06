@@ -505,7 +505,7 @@ export default function APILandingPage() {
           </p>
 
           {/* Debug Info */}
-          {(CONVERTKIT_FORM_ID === 'YOUR_FORM_ID_HERE' || CONVERTKIT_API_KEY === 'YOUR_API_KEY_HERE') && (
+          {(CONVERTKIT_FORM_ID === '8635829' || CONVERTKIT_API_KEY === 'w2ORBBTTcrdBvkjED8B5HQ') && (
             <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6 text-left">
               <p className="text-yellow-400 font-semibold mb-2">⚠️ ConvertKit Not Configured</p>
               <p className="text-sm text-slate-300">
