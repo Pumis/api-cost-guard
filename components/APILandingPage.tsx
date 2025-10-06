@@ -163,9 +163,9 @@ export default function APILandingPage() {
             <DollarSign className="w-8 h-8 text-emerald-400" />
             <span className="text-xl font-bold">API Cost Guard</span>
           </div>
-          <button className="px-6 py-2 bg-emerald-500 hover:bg-emerald-600 rounded-lg font-medium transition-colors">
-            Start Free Trial
-          </button>
+          <a href="#waitlist" className="px-6 py-2 bg-emerald-500 hover:bg-emerald-600 rounded-lg font-medium transition-colors">
+            Join Waitlist
+          </a>
         </div>
       </header>
 
@@ -189,9 +189,9 @@ export default function APILandingPage() {
             Try Free Calculator
             <ArrowRight className="w-5 h-5" />
           </a>
-          <button className="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold text-lg transition-colors border border-slate-700">
-            Watch Demo
-          </button>
+          <a href="#waitlist" className="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold text-lg transition-colors border border-slate-700">
+            Join Waitlist
+          </a>
         </div>
       </section>
 
@@ -409,10 +409,10 @@ export default function APILandingPage() {
                 '100K tracked calls/month',
                 'Multi-user access',
                 'Cost allocation',
-                'Slack integration',
+                'API integration',
                 'Priority support'
               ],
-              cta: 'Start Free Trial',
+              cta: 'Join Waitlist',
               highlight: false
             }
           ].map((plan, i) => (
@@ -436,13 +436,16 @@ export default function APILandingPage() {
               </div>
               <p className="text-slate-400 mb-8">{plan.description}</p>
               
-              <button className={`w-full py-3 rounded-lg font-semibold mb-8 transition-colors ${
-                plan.highlight
-                  ? 'bg-emerald-500 hover:bg-emerald-600'
-                  : 'bg-slate-700 hover:bg-slate-600'
-              }`}>
+              <a 
+                href="#waitlist"
+                className={`w-full py-3 rounded-lg font-semibold mb-8 transition-colors block text-center ${
+                  plan.highlight
+                    ? 'bg-emerald-500 hover:bg-emerald-600'
+                    : 'bg-slate-700 hover:bg-slate-600'
+                }`}
+              >
                 {plan.cta}
-              </button>
+              </a>
 
               <div className="space-y-3">
                 {plan.features.map((feature, j) => (
@@ -462,7 +465,7 @@ export default function APILandingPage() {
       </section>
 
       {/* Email Capture CTA */}
-      <section className="max-w-4xl mx-auto px-4 py-20">
+      <section id="waitlist" className="max-w-4xl mx-auto px-4 py-20">
         <div className="bg-gradient-to-r from-emerald-500/20 to-blue-500/20 border border-emerald-500/30 rounded-2xl p-12 text-center relative overflow-hidden">
           <div className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold animate-pulse">
             🔥 First 10 Only!
@@ -534,8 +537,8 @@ export default function APILandingPage() {
               a: 'OpenAI, Anthropic (Claude), Google (Gemini), Cohere, Mistral, Azure OpenAI, AWS Bedrock, and more. Request support for any provider.'
             },
             {
-              q: 'How accurate are the recommendations?',
-              a: 'We analyze your actual usage patterns and benchmark against 500+ companies. Our recommendations save users an average of 40-65% on costs.'
+              q: 'How do the recommendations work?',
+              a: 'We analyze your usage patterns and suggest cheaper models for specific tasks. For example, using Claude Haiku instead of GPT-4 for simple tasks can reduce costs by 90%+.'
             },
             {
               q: 'Can I self-host?',
@@ -591,8 +594,8 @@ export default function APILandingPage() {
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <div className="space-y-2 text-sm text-slate-400">
-<a href="/privacy" className="block hover:text-white">Privacy</a>
-<a href="/terms" className="block hover:text-white">Terms</a>
+                <a href="#" className="block hover:text-white">Privacy</a>
+                <a href="#" className="block hover:text-white">Terms</a>
                 <a href="#" className="block hover:text-white">Security</a>
               </div>
             </div>
